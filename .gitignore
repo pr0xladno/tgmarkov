@@ -1,0 +1,22 @@
+# Python-generated files
+__pycache__/
+*.py[ocd]
+build/
+dist/
+wheels/
+*.egg-info
+uv.lock
+*.lock
+
+# Virtual environments
+.venv
+.env
+
+# IDE settings
+.vscode/
+.idea/
+
+# Project-specific files
+messages.db
+messages.txt
+data/

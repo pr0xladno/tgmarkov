@@ -1,0 +1,9 @@
+services:
+  tgmarkov:
+    build: .
+    container_name: tgmarkov
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
