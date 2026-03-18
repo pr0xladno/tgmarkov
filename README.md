@@ -1,6 +1,6 @@
-# TGMarkov
+# tgmarkov
 
-A Telegram bot that learns from a target user's messages and generates responses using Markov chains, similar to. The bot collects messages from the specified user, builds a Markov model, and occasionally responds with generated text that mimics the user's style.
+A Telegram bot that learns from a target user's messages and generates responses using Markov chains, somewhat similar to [vk-markovify-chatbot](https://github.com/monosans/vk-markovify-chatbot) but with extra steps. The bot collects messages from the specified user, builds a Markov model, and occasionally responds with generated text that mimics the user's style.
 
 ## Prerequisites
 
@@ -69,7 +69,7 @@ The bot requires the following environment variables:
 
 - `BOT_TOKEN`: Your Telegram bot token from BotFather
 - `TARGET_USERNAME`: The username of the user whose messages the bot will learn from (without @)
-- `TXT_PATH`: Path to the initial text file for seeding the Markov model (default: messages.txt)
+- `TXT_PATH`: Path to the initial text file for seeding the Markov model (default: messages.txt). Note that the project uses NewlineText(), so format the file firstly.
 - `RESPONSE_CHANCE`: Probability of the bot responding to messages (default: 0.15 = 15%)
 
 ## How It Works
@@ -93,4 +93,4 @@ The project uses:
 
 ## License
 
-[Add your license here]
+[MIT](LICENSE)
