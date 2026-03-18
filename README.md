@@ -23,12 +23,11 @@ A Telegram bot that learns from a target user's messages and generates responses
    BOT_TOKEN=your_telegram_bot_token_here
    TARGET_USERNAME=target_user_username_without_@
    TXT_PATH=messages.txt
-   RESPONSE_CHANCE=0.15
    ```
 
 3. Run with Docker Compose:
    ```bash
-   docker-compose up -d
+   docker compose up -d
    ```
 
 ### Option 2: Local Python Environment
@@ -55,7 +54,6 @@ A Telegram bot that learns from a target user's messages and generates responses
    BOT_TOKEN=your_telegram_bot_token_here
    TARGET_USERNAME=target_user_username_without_@
    TXT_PATH=messages.txt
-   RESPONSE_CHANCE=0.15
    ```
 
 4. Run the bot:
@@ -70,7 +68,6 @@ The bot requires the following environment variables:
 - `BOT_TOKEN`: Your Telegram bot token from BotFather
 - `TARGET_USERNAME`: The username of the user whose messages the bot will learn from (without @)
 - `TXT_PATH`: Path to the initial text file for seeding the Markov model (default: messages.txt). Note that the project uses NewlineText(), so format the file firstly.
-- `RESPONSE_CHANCE`: Probability of the bot responding to messages (default: 0.15 = 15%)
 
 ## How It Works
 
