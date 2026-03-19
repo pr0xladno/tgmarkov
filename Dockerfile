@@ -9,7 +9,8 @@ COPY pyproject.toml ./
 
 # Export dependencies to requirements.txt and install
 RUN uv export --format requirements-txt --output-file requirements.txt && \
-    uv pip install --system -r requirements.txt
+    uv pip install --system --no-cache-dir -r requirements.txt && \
+    rm requirements.txt
 
 # Copy the rest of the application
 COPY . .
