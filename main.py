@@ -20,7 +20,7 @@ logger = logging.getLogger(__name__)
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 TARGET_USERNAME = os.getenv("TARGET_USERNAME")
 TXT_PATH = os.getenv("TXT_PATH")
-RESPONSE_CHANCE = 0.15
+RESPONSE_CHANCE = os.getenv("RESPONSE_CHANCE", "0.15")
 
 if not BOT_TOKEN or not TARGET_USERNAME or not TXT_PATH:
     logger.error("Missing environment variables.")
@@ -40,7 +40,7 @@ class MarkovBot:
         self.txt_path = txt_path
         self.response_chance = response_chance
 
-        self.conn = sqlite3.connect("messages.db")
+        self.conn = sqlite3.connect("./data/messages.db")
         self.cursor = self.conn.cursor()
         self._init_db()
         self.model = self._build_model()
@@ -94,7 +94,7 @@ class MarkovBot:
         logger.info(
             f"Received message from @{message.from_user.username}: {message.text}"
         )
-        if message.from_user.username == self.target_user_id:
+        if message.from_user.username == self.target_user_id and message.text:
             self.add_message(message.text)
             self.model = self._build_model()
         if random.random() < self.response_chance:
@@ -110,7 +110,7 @@ class MarkovBot:
             logger.error(f"Error sending message to chat {chat_id}: {e}")
 
     async def generate_sentence(self):
-        return self.model.make_sentence()
+        return self.model.make_short_sentence(random.randint(0, 100))
 
     async def run(self):
         logger.info("Starting bot...")
